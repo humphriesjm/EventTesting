@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9655FDD3188F47AD002B77DF /* CreateReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9655FDD2188F47AD002B77DF /* CreateReminderViewController.m */; };
 		967779AE188F2832007596BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967779AD188F2832007596BA /* Foundation.framework */; };
 		967779B0188F2832007596BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967779AF188F2832007596BA /* CoreGraphics.framework */; };
 		967779B2188F2832007596BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967779B1188F2832007596BA /* UIKit.framework */; };
@@ -19,6 +20,9 @@
 		967779C9188F2832007596BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967779B1188F2832007596BA /* UIKit.framework */; };
 		967779D1188F2832007596BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 967779CF188F2832007596BA /* InfoPlist.strings */; };
 		967779D3188F2832007596BA /* JHEventTestingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 967779D2188F2832007596BA /* JHEventTestingTests.m */; };
+		967779DD188F2909007596BA /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967779DC188F2909007596BA /* EventKit.framework */; };
+		967779DF188F290F007596BA /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967779DE188F290F007596BA /* EventKitUI.framework */; };
+		967779E2188F2CE6007596BA /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 967779E1188F2CE6007596BA /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9655FDD1188F47AD002B77DF /* CreateReminderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateReminderViewController.h; sourceTree = "<group>"; };
+		9655FDD2188F47AD002B77DF /* CreateReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateReminderViewController.m; sourceTree = "<group>"; };
 		967779AA188F2832007596BA /* JHEventTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JHEventTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		967779AD188F2832007596BA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		967779AF188F2832007596BA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,6 +54,10 @@
 		967779CE188F2832007596BA /* JHEventTestingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JHEventTestingTests-Info.plist"; sourceTree = "<group>"; };
 		967779D0188F2832007596BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		967779D2188F2832007596BA /* JHEventTestingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JHEventTestingTests.m; sourceTree = "<group>"; };
+		967779DC188F2909007596BA /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		967779DE188F290F007596BA /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		967779E0188F2CE6007596BA /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		967779E1188F2CE6007596BA /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				967779DF188F290F007596BA /* EventKitUI.framework in Frameworks */,
+				967779DD188F2909007596BA /* EventKit.framework in Frameworks */,
 				967779B0188F2832007596BA /* CoreGraphics.framework in Frameworks */,
 				967779B2188F2832007596BA /* UIKit.framework in Frameworks */,
 				967779AE188F2832007596BA /* Foundation.framework in Frameworks */,
@@ -96,6 +108,8 @@
 		967779AC188F2832007596BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				967779DE188F290F007596BA /* EventKitUI.framework */,
+				967779DC188F2909007596BA /* EventKit.framework */,
 				967779AD188F2832007596BA /* Foundation.framework */,
 				967779AF188F2832007596BA /* CoreGraphics.framework */,
 				967779B1188F2832007596BA /* UIKit.framework */,
@@ -109,6 +123,10 @@
 			children = (
 				967779BC188F2832007596BA /* AppDelegate.h */,
 				967779BD188F2832007596BA /* AppDelegate.m */,
+				967779E0188F2CE6007596BA /* MainViewController.h */,
+				967779E1188F2CE6007596BA /* MainViewController.m */,
+				9655FDD1188F47AD002B77DF /* CreateReminderViewController.h */,
+				9655FDD2188F47AD002B77DF /* CreateReminderViewController.m */,
 				967779BF188F2832007596BA /* Images.xcassets */,
 				967779B4188F2832007596BA /* Supporting Files */,
 			);
@@ -240,6 +258,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				967779BE188F2832007596BA /* AppDelegate.m in Sources */,
+				967779E2188F2CE6007596BA /* MainViewController.m in Sources */,
+				9655FDD3188F47AD002B77DF /* CreateReminderViewController.m in Sources */,
 				967779BA188F2832007596BA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +461,7 @@
 				967779D8188F2832007596BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		967779D9188F2832007596BA /* Build configuration list for PBXNativeTarget "JHEventTestingTests" */ = {
 			isa = XCConfigurationList;
@@ -449,6 +470,7 @@
 				967779DB188F2832007596BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
