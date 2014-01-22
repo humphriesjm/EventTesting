@@ -12,6 +12,10 @@
 @interface CreateReminderViewController () <UITextFieldDelegate, UIPickerViewDelegate>
 @property (strong, nonatomic) UILabel *startLabel;
 @property (strong, nonatomic) UITextField *titleField;
+@property (strong, nonatomic) UIBarButtonItem *doneBBI;
+@property (strong, nonatomic) UIBarButtonItem *cancelBBI;
+@property (strong, nonatomic) UINavigationBar *navBar;
+@property (strong, nonatomic) UINavigationItem *titleItem;
 @end
 
 @implementation CreateReminderViewController
@@ -21,6 +25,8 @@
     if (!self) {
         self = [super init];
     }
+    self.cancelBBI = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAction)];
+    self.doneBBI = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction)];
     return self;
 }
 
@@ -28,19 +34,20 @@
 {
     [super viewDidLoad];
     
-    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 64.f)];
-    UINavigationItem *titleItem = [[UINavigationItem alloc] initWithTitle:@"Create Reminder"];
-    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction)];
-    titleItem.rightBarButtonItem = doneItem;
-    navBar.items = @[titleItem];
-    [self.view addSubview:navBar];
+    self.navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320.f, 64.f)];
+    self.titleItem = [[UINavigationItem alloc] initWithTitle:@"Create Reminder"];
+    self.doneBBI.enabled = NO;
+    self.titleItem.rightBarButtonItem = self.doneBBI;
+    self.titleItem.leftBarButtonItem = self.cancelBBI;
+    self.navBar.items = @[self.titleItem];
+    [self.view addSubview:self.navBar];
     
     // initialize reminder
     self.reminder = [EKReminder reminderWithEventStore:MY_APP_DELEGATE.mainEventStore];
     self.reminder.calendar = [MY_APP_DELEGATE.mainEventStore defaultCalendarForNewReminders];
     
     // reminder title
-    self.reminder.title = @"Default Title";
+    self.reminder.title = @"No Title";
     self.titleField = [[UITextField alloc] initWithFrame:CGRectMake(20, 84, 320, 60)];
     self.titleField.placeholder = @"Enter Reminder Title Here";
     self.titleField.delegate = self;
@@ -57,9 +64,9 @@
     [self.view addSubview:startPicker];
     
     NSDateComponents *tomorrowComponents = [[NSDateComponents alloc] init];
-    tomorrowComponents.day = 1;
-    tomorrowComponents.month = 0;
-    tomorrowComponents.year = 0;
+    tomorrowComponents.day = 23;
+    tomorrowComponents.month = 1;
+    tomorrowComponents.year = 2014;
 //    NSDate *tomorrowDate = [calendar dateByAddingComponents:tomorrowComponents
 //                                                     toDate:[NSDate date]
 //                                                    options:0];
@@ -67,10 +74,15 @@
     
     // reminder end
     NSDateComponents *twoDaysComponents = [[NSDateComponents alloc] init];
-    twoDaysComponents.day = 2;
-    twoDaysComponents.month = 0;
-    twoDaysComponents.year = 0;
+    twoDaysComponents.day = 24;
+    twoDaysComponents.month = 1;
+    twoDaysComponents.year = 2014;
     self.reminder.dueDateComponents = twoDaysComponents;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -78,6 +90,18 @@
     [textField resignFirstResponder];
     if ([textField.text length] > 0) {
         self.reminder.title = textField.text;
+        self.doneBBI.enabled = YES;
+    }
+    return YES;
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString *wholeString = [textField.text stringByAppendingString:string];
+    if (wholeString.length > 0) {
+        self.doneBBI.enabled = YES;
+    } else {
+        self.doneBBI.enabled = NO;
     }
     return YES;
 }
@@ -88,6 +112,11 @@
 	df.dateStyle = NSDateFormatterMediumStyle;
 	self.startLabel.text = [NSString stringWithFormat:@"%@",
                             [df stringFromDate:picker.date]];
+}
+
+-(void)cancelAction
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)doneAction

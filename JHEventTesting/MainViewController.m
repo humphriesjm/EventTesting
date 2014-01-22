@@ -39,36 +39,35 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reminderCell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reminderCell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"reminderCell"];
     }
     EKReminder *cellReminder = self.remindersArray[indexPath.row];
     cell.textLabel.text = cellReminder.title;
+    if (cellReminder.dueDateComponents) {
+        NSString *dueDateString = [NSString stringWithFormat:@"%d-%d-%d", cellReminder.dueDateComponents.month, cellReminder.dueDateComponents.day, cellReminder.dueDateComponents.year];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"Due: %@", dueDateString];
+    }
+    if (cellReminder.completed) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    EKReminder *selectedReminder = self.remindersArray[indexPath.row];
+    if (!selectedReminder.completed) {
+        [selectedReminder setCompletionDate:[NSDate date]];
+    } else {
+        selectedReminder.completionDate = nil;
+    }
+    [tableView reloadData];
 }
 
 #pragma mark - methods
-
--(void)createReminder
-{
-    EKReminder *reminder = [EKReminder reminderWithEventStore:MY_APP_DELEGATE.mainEventStore];
-    reminder.title = @"jasons test reminder title";
-    reminder.calendar = [MY_APP_DELEGATE.mainEventStore defaultCalendarForNewReminders];
-    //    reminder.startDateComponents
-    //    reminder.dueDateComponents
-    //    reminder.completed = YES; // sets completionDate to now
-    NSError *reminderErr;
-    [MY_APP_DELEGATE.mainEventStore saveReminder:reminder
-                           commit:YES
-                            error:&reminderErr];
-    if (reminderErr) {
-        NSLog(@"error saving reminder: %@", reminderErr);
-    }
-}
 
 //-(void)showACalendarsEvents
 //{
@@ -196,13 +195,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self fetchAllReminders];
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+    NSLog(@"viewDidLoad");
     
     self.title = @"Event Kit Testing";
     
@@ -223,6 +216,14 @@
     [self.remindersTable addSubview:self.refreshControl];
     
     [self.view addSubview:self.remindersTable];
+    
+    [self fetchAllReminders];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSLog(@"viewWillAppear");
 }
 
 
