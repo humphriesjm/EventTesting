@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 
 @interface MainViewController () <UITableViewDataSource, UITableViewDelegate, ReminderCreationDelegate>
-@property (strong, nonatomic) UITableView *remindersTable;
+@property (strong, nonatomic) IBOutlet UITableView *remindersTable;
 @property (strong, nonatomic) NSArray *remindersArray;
 @property (strong, nonatomic) CreateReminderViewController *createViewController;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
@@ -199,14 +199,14 @@
     
     self.title = @"Event Kit Testing";
     
-    UIBarButtonItem *createBBI = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                               target:self
-                                                                               action:@selector(showCreateReminder)];
+//    UIBarButtonItem *createBBI = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+//                                                                               target:self
+//                                                                               action:@selector(showCreateReminder)];
+//    
+//    self.navigationItem.rightBarButtonItem = createBBI;
     
-    self.navigationItem.rightBarButtonItem = createBBI;
-    
-    self.remindersTable = [[UITableView alloc] initWithFrame:self.view.bounds
-                                                       style:UITableViewStyleGrouped];
+//    self.remindersTable = [[UITableView alloc] initWithFrame:self.view.bounds
+//                                                       style:UITableViewStyleGrouped];
     self.remindersTable.delegate = self;
     self.remindersTable.dataSource = self;
     
@@ -215,7 +215,7 @@
     [self.refreshControl addTarget:self action:@selector(fetchAllReminders) forControlEvents:UIControlEventValueChanged];
     [self.remindersTable addSubview:self.refreshControl];
     
-    [self.view addSubview:self.remindersTable];
+//    [self.view addSubview:self.remindersTable];
     
     [self fetchAllReminders];
 }

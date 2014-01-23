@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9655FDD3188F47AD002B77DF /* CreateReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9655FDD2188F47AD002B77DF /* CreateReminderViewController.m */; };
+		9669F73D1891CFDA00803FD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9669F73C1891CFDA00803FD7 /* Main.storyboard */; };
 		967779AE188F2832007596BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967779AD188F2832007596BA /* Foundation.framework */; };
 		967779B0188F2832007596BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967779AF188F2832007596BA /* CoreGraphics.framework */; };
 		967779B2188F2832007596BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967779B1188F2832007596BA /* UIKit.framework */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		9655FDD1188F47AD002B77DF /* CreateReminderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateReminderViewController.h; sourceTree = "<group>"; };
 		9655FDD2188F47AD002B77DF /* CreateReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateReminderViewController.m; sourceTree = "<group>"; };
+		9669F73C1891CFDA00803FD7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		967779AA188F2832007596BA /* JHEventTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JHEventTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		967779AD188F2832007596BA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		967779AF188F2832007596BA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -86,6 +88,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9669F73E1891CFDE00803FD7 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				9669F73C1891CFDA00803FD7 /* Main.storyboard */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		9669F73F1891CFE300803FD7 /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		9669F7401891CFE900803FD7 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				967779E0188F2CE6007596BA /* MainViewController.h */,
+				967779E1188F2CE6007596BA /* MainViewController.m */,
+				9655FDD1188F47AD002B77DF /* CreateReminderViewController.h */,
+				9655FDD2188F47AD002B77DF /* CreateReminderViewController.m */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		9669F7411891CFF400803FD7 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				967779BC188F2832007596BA /* AppDelegate.h */,
+				967779BD188F2832007596BA /* AppDelegate.m */,
+			);
+			name = helpers;
+			sourceTree = "<group>";
+		};
 		967779A1188F2832007596BA = {
 			isa = PBXGroup;
 			children = (
@@ -121,13 +158,10 @@
 		967779B3188F2832007596BA /* JHEventTesting */ = {
 			isa = PBXGroup;
 			children = (
-				967779BC188F2832007596BA /* AppDelegate.h */,
-				967779BD188F2832007596BA /* AppDelegate.m */,
-				967779E0188F2CE6007596BA /* MainViewController.h */,
-				967779E1188F2CE6007596BA /* MainViewController.m */,
-				9655FDD1188F47AD002B77DF /* CreateReminderViewController.h */,
-				9655FDD2188F47AD002B77DF /* CreateReminderViewController.m */,
-				967779BF188F2832007596BA /* Images.xcassets */,
+				9669F7411891CFF400803FD7 /* helpers */,
+				9669F7401891CFE900803FD7 /* controllers */,
+				9669F73E1891CFDE00803FD7 /* views */,
+				9669F73F1891CFE300803FD7 /* models */,
 				967779B4188F2832007596BA /* Supporting Files */,
 			);
 			path = JHEventTesting;
@@ -136,6 +170,7 @@
 		967779B4188F2832007596BA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				967779BF188F2832007596BA /* Images.xcassets */,
 				967779B5188F2832007596BA /* JHEventTesting-Info.plist */,
 				967779B6188F2832007596BA /* InfoPlist.strings */,
 				967779B9188F2832007596BA /* main.m */,
@@ -240,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9669F73D1891CFDA00803FD7 /* Main.storyboard in Resources */,
 				967779B8188F2832007596BA /* InfoPlist.strings in Resources */,
 				967779C0188F2832007596BA /* Images.xcassets in Resources */,
 			);

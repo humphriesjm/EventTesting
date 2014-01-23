@@ -20,14 +20,14 @@
 
 @implementation CreateReminderViewController
 
--(id)init
+-(void)awakeFromNib
 {
-    if (!self) {
-        self = [super init];
-    }
+//    if (!self) {
+//        self = [super init];
+//    }
     self.cancelBBI = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAction)];
     self.doneBBI = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction)];
-    return self;
+//    return self;
 }
 
 - (void)viewDidLoad
